@@ -15,11 +15,14 @@
       h2 {
         font-size: 27px;
       }
+      #text {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <h1>Power english lesson 1</h1>
-    <p>
+    <div id="text">
       Intro Main Text These lessons are sold only on our website,
       EffortlessEnglishClub.com. If you bought these lessons somewhere else, you
       have an illegal copy. Please notify us and we will take immediate legal
@@ -200,9 +203,9 @@
       the mini‑story, one, two, three, four, five times…every day. And remember,
       relax, feel good and enjoy the lessons while you listen. Okay, that is it
       for our main section for this introduction. Next is the vocabulary.
-    </p>
+    </div>
 
-    <h1>Level 1</h1>
+    <!-- <h1>Level 1</h1>
     <br />
     <h2>Day of the Dead</h2>
     <p>
@@ -405,22 +408,21 @@
       grown-ups, everyone should be able to get past it. But if they can't, you
       are going to have to decide whether you want this man, or to be a people-
       pleaser for the rest of your life.
-    </p>
+    </p> -->
     <script>
-      // Get all the <p> elements
-      var paragraphs = document.querySelectorAll('p');
+      // Get the text content of the <div> element
+      const textDiv = document.getElementById('text');
+      const textContent = textDiv.textContent;
 
-      // Loop through each <p> element and modify its text content
-      for (var i = 0; i < paragraphs.length; i++) {
-        // Get the text content of the <p> element
-        var text = paragraphs[i].textContent;
+      // Split the text into sentences using regular expressions
+      const sentences = textContent.split(/(?<=[.!?])\s/);
 
-        // Replace all "." characters with ".\n" to add a new line
-        text = text.replace(/\./g, '.\n');
-
-        // Set the modified text back to the <p> element
-        paragraphs[i].textContent = text;
-      }
+      // Create a new <p> element for each sentence and append it to the body
+      sentences.forEach((sentence) => {
+        const p = document.createElement('p');
+        p.textContent = sentence;
+        document.body.appendChild(p);
+      });
     </script>
   </body>
 </html>
