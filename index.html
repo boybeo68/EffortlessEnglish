@@ -15,9 +15,6 @@
       h2 {
         font-size: 27px;
       }
-      #text {
-        display: none;
-      }
     </style>
   </head>
   <body>
@@ -423,6 +420,7 @@
         p.textContent = sentence;
         document.body.appendChild(p);
       });
+      document.body.removeChild(textDiv);
     </script>
   </body>
 </html>
